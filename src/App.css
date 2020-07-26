@@ -1,38 +1,61 @@
-.App {
+.text-center {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.nav {
+  border-bottom: 3px solid #46b546;
+}
+.nav-link {
+  color: #333;
+  padding: 1.2rem 1em !important;
+}
+.nav-link:hover {
+  background-color: #46b546;
+  color: #fff;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.logged-user {
+  padding: 0.5em 0;
+  margin-left: 50px;
+}
+.logged-user__greeting {
+  margin-right: 20px;
+}
+.logged-user__avatar {
+  width: 48px;
+  border-radius: 50%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/************************\
+    login properties
+\************************/
+
+.login-card {
+  width: 500px;
+  margin: 40px auto;
+}
+.login-card__logo {
+  width: 240px;
+  margin-bottom: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+.user-dropdown {
+  text-align: left !important;
+}
+.dropdown-toggle::after {
+  position: absolute;
+  top: 48%;
+  right: 14px;
+}
+.dropdown-menu--block {
+  width: 100%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.dropdown-item {
+  cursor: pointer;
+}
+.dropdown-item__image {
+  width: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
 }
