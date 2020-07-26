@@ -1,44 +1,48 @@
 import React, { useState } from 'react'
+import { connect } from 'react-redux';
 
-const SelectUser = () => {
+const SelectUser = ({ users, selectUser }) => {
   const [showList, setShowList] = useState(false);
+  const [authedUser, setAuthedUser] = useState("");
 
-  let toggleDropDown = () => {
+  const toggleDropDown = () => {
     setShowList(!showList)
   }
+
+  const setUser = uid => {
+    setAuthedUser(uid);
+    toggleDropDown();
+    selectUser(uid);
+  }
+
   return (
     <div className="dropdown">
-      <button 
-        className="btn btn-block btn-light dropdown-toggle user-dropdown" 
+      <button
+        className="btn btn-block btn-light dropdown-toggle user-dropdown"
         aria-haspopup="true" aria-expanded="false"
         onClick={toggleDropDown}>
-        Select user
+        {authedUser ? users[authedUser].name : "Select user"}
       </button>
       <ul className={`dropdown-menu dropdown-menu--block ${showList ? 'show' : ''}`} aria-labelledby="dropdownMenuButton">
-        <li className="dropdown-item">
-          <img 
-            className="dropdown-item__image"
-            src="https://tylermcginnis.com/would-you-rather/tyler.jpg" 
-            alt=""/>
-          <span className="dropdown-item__name">Tyler beeh</span>
-        </li>
-        <li className="dropdown-item">
-          <img 
-            className="dropdown-item__image"
-            src="https://tylermcginnis.com/would-you-rather/tyler.jpg" 
-            alt=""/>
-          <span className="dropdown-item__name">Tyler beeh</span>
-        </li>
-        <li className="dropdown-item">
-          <img 
-            className="dropdown-item__image"
-            src="https://tylermcginnis.com/would-you-rather/tyler.jpg" 
-            alt=""/>
-          <span className="dropdown-item__name">Tyler beeh</span>
-        </li>
+        { users && (
+          Object.keys(users).map(uid => (
+            <li 
+              key={uid} 
+              onClick={() => setUser(uid)} 
+              className="dropdown-item">
+              <img
+                className="dropdown-item__image"
+                src={users[uid].avatarURL}
+                alt={`${users[uid].name} avatar`} />
+              <span className="dropdown-item__name">{users[uid].name}</span>
+            </li>
+          ))
+        )}
       </ul>
     </div>
   );
 }
- 
-export default SelectUser;
+
+const mapStateToProps = ({ users }) => ({ users })
+
+export default connect(mapStateToProps)(SelectUser);

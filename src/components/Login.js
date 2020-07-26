@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import SelectUser from './SelectUser';
+import { connect } from 'react-redux';
+import { receiveAuthedUser } from '../actions/authedUser.action';
 
-const Login = () => {
+const Login = ({ dispatch }) => {
+
+  const [selectedUser, setSelectedUser] = useState("");
+
+  const login = () => {
+    console.log({selectedUser})
+    dispatch(receiveAuthedUser(selectedUser));
+  }
+
   return (
     <div className="card login-card text-center">
       <div className="card-header">
@@ -14,13 +24,15 @@ const Login = () => {
           src="https://railsware.com/blog/wp-content/uploads/2017/06/Hideable-React.png" 
           alt="react and redux"/>
 
-        <SelectUser />
+        <SelectUser selectUser={setSelectedUser} />
         <br/>
 
-        <button className="btn btn-block btn-success">Login</button>
+        <button 
+          onClick={login}
+          className="btn btn-block btn-success">Login</button>
       </div>
     </div>
   );
 }
 
-export default Login;
+export default connect()(Login);
