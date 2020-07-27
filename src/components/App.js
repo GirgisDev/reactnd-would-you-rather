@@ -2,20 +2,41 @@ import React, { useEffect } from 'react';
 import './../App.css';
 import Navbar from './Navbar';
 import "bootstrap/dist/css/bootstrap.min.css"
-import Login from './Login';
 import { connect } from 'react-redux';
 import { handleInitialData } from '../actions/shared.action';
+import { withRouter, Switch, Route } from 'react-router-dom';
 
-function App({dispatch}) {
+import Login from './Login';
+import Questions from './Questions';
+import QuestionDetails from "./QuestionDetails"
+
+function App({ authedUser, dispatch, history, location }) {
+
   useEffect(() => {
-    dispatch(handleInitialData())
-  }, [])
+    if (authedUser === null) dispatch(handleInitialData());
+    
+    if (location.pathname !== "/login" && !authedUser) history.push("/login")
+    let unListenToRouteing = history.listen((location, action) => {
+      if (location.pathname !== "/login" && !authedUser) history.push("/login")
+    });
+
+    return () => {
+      unListenToRouteing();
+    }
+  }, [authedUser])
+  
   return (
     <div className="App">
       <Navbar />
-      <Login />
+      <Switch>
+        <Route path="/login" component={Login} />
+        <Route path="/question/:id" component={QuestionDetails} />
+        <Route path="/" exact component={Questions} />
+      </Switch>
     </div>
   );
 }
 
-export default connect()(App);
+const mapStateToProps = ({ authedUser }) => ({ authedUser })
+
+export default withRouter(connect(mapStateToProps)(App));

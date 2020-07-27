@@ -3,13 +3,15 @@ import SelectUser from './SelectUser';
 import { connect } from 'react-redux';
 import { receiveAuthedUser } from '../actions/authedUser.action';
 
-const Login = ({ dispatch }) => {
+const Login = ({ dispatch, authedUser, history }) => {
 
   const [selectedUser, setSelectedUser] = useState("");
-
+  
   const login = () => {
-    console.log({selectedUser})
     dispatch(receiveAuthedUser(selectedUser));
+    setTimeout(() => {
+      history.push("/");
+    }, 0)
   }
 
   return (
@@ -35,4 +37,6 @@ const Login = ({ dispatch }) => {
   );
 }
 
-export default connect()(Login);
+const mapStateToProps = ({ authedUser }) => ({ authedUser })
+
+export default connect(mapStateToProps)(Login);

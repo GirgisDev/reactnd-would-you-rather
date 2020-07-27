@@ -1,19 +1,38 @@
 import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { receiveAuthedUser } from '../actions/authedUser.action';
 
-const Navbar = () => {
+const Navbar = ({ dispatch, user }) => {
+  const logout = () => {
+    dispatch(receiveAuthedUser(""));
+  }
   return (
     <nav className="nav nav-masthead justify-content-center">
-      <NavLink className="nav-link" to="/">Home</NavLink>
-      <NavLink className="nav-link" to="/new-questions">New questions</NavLink>
-      <NavLink className="nav-link" to="/leader-board">Leader board</NavLink>
-      <div className="logged-user">
-        <span className="logged-user__greeting">Hello, Girgis A.Jacoub</span>
-        <img src="https://avatars2.githubusercontent.com/u/11912956?s=460&u=9d9c42a55881f00fa4e1345e1af5f6795b5fd107&v=4" alt="" className="logged-user__avatar"/>
-        <div className="nav-link nav-link--inline">Logout</div>
-      </div>
+      <NavLink 
+        className="nav-link" 
+        exact
+        activeClassName="nav-link--active" 
+        to="/">Home</NavLink>
+      <NavLink 
+        className="nav-link" 
+        activeClassName="nav-link--active" 
+        to="/new-questions">New questions</NavLink>
+      <NavLink 
+        className="nav-link" 
+        activeClassName="nav-link--active" 
+        to="/leader-board">Leader board</NavLink>
+      {user && (
+        <div className="logged-user">
+          <span className="logged-user__greeting">Hello, {user.name}</span>
+          <img src={user.avatarURL} alt={`${user.name} avatar`} className="logged-user__avatar"/>
+          <div onClick={logout} className="nav-link nav-link--inline">Logout</div>
+        </div>
+      )}
     </nav>
   );
 }
 
-export default Navbar;
+const mapStateToProps = ({ users, authedUser }) => ({ user: users[authedUser] })
+
+export default connect(mapStateToProps)(Navbar);

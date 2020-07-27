@@ -23,7 +23,9 @@ const SelectUser = ({ users, selectUser }) => {
         onClick={toggleDropDown}>
         {authedUser ? users[authedUser].name : "Select user"}
       </button>
-      <ul className={`dropdown-menu dropdown-menu--block ${showList ? 'show' : ''}`} aria-labelledby="dropdownMenuButton">
+      <ul 
+        className={`dropdown-menu dropdown-menu--block ${showList ? 'show' : ''}`} 
+        aria-labelledby="dropdownMenuButton">
         { users && (
           Object.keys(users).map(uid => (
             <li 
