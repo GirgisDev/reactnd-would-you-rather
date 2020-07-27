@@ -39,8 +39,9 @@ const AnsweredQuestion = ({ users, authedUser, questions, questionId }) => {
                 className="question-card__result-box__progress__bar">{getResults().optionOnePercent}</div>
             </div>
             <div className="question-card__result-box__votes">
-              {getResults().optionOneVotes} out of {getResults().totalVotes}
+              {getResults().optionOneVotes} out of {getResults().totalVotes} votes
             </div>
+            {optionOneSelected && <div className="ribbon"><span className="ribbon__text">Selected</span></div>}
           </div>
 
           <div className={`question-card__result-box ${optionTwoSelected ? 'question-card__result-box--selected' : ''}`}>
@@ -51,10 +52,10 @@ const AnsweredQuestion = ({ users, authedUser, questions, questionId }) => {
                 className="question-card__result-box__progress__bar">{getResults().optionTwoPercent}</div>
             </div>
             <div className="question-card__result-box__votes">
-              {getResults().optionTwoVotes} out of {getResults().totalVotes}
+              {getResults().optionTwoVotes} out of {getResults().totalVotes} votes
             </div>
+            {optionTwoSelected && <div className="ribbon"><span className="ribbon__text">Selected</span></div>}
           </div>
-
         </div>
       </div>
     </div>

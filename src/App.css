@@ -131,14 +131,15 @@
 \***********************************/
 
 .question-card__result-box {
-  background-color: #F9F9F9;
-  border-radius: 5px;
+  position: relative;
   margin-bottom: 20px;
   border: 1px solid #DEDEDE;
-  padding: 10px;
+  padding: 30px 20px 20px;
+  background-color: #F9F9F9;
+  border-radius: 5px;
 }
 .question-card__result-box--selected {
-  background-color: #c8ffc8;
+  background-color: #f0fff0;
   border: 1px solid green;
 }
 
@@ -162,4 +163,52 @@
 .question-card__result-box__votes {
   text-align: center;
   font-weight: bold;
+}
+
+
+/*******************************\
+      ribbon properties
+\*******************************/
+.ribbon {
+  position: absolute;
+  right: -5px; top: -5px;
+  z-index: 1;
+  overflow: hidden;
+  width: 75px; height: 75px;
+  text-align: right;
+}
+.ribbon__text {
+  font-size: 10px;
+  font-weight: bold;
+  color: #FFF;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 20px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  width: 100px;
+  display: block;
+  background: #79A70A;
+  background: linear-gradient(#69C928 0%, #46B546 100%);
+  box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
+  position: absolute;
+  top: 19px; right: -21px;
+}
+.ribbon__text::before {
+  content: "";
+  position: absolute; left: 0px; top: 100%;
+  z-index: -1;
+  border-left: 3px solid #46B546;
+  border-right: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+  border-top: 3px solid #46B546;
+}
+.ribbon__text::after {
+  content: "";
+  position: absolute; right: 0px; top: 100%;
+  z-index: -1;
+  border-left: 3px solid transparent;
+  border-right: 3px solid #46B546;
+  border-bottom: 3px solid transparent;
+  border-top: 3px solid #46B546;
 }
