@@ -3,7 +3,7 @@ import Question from './Question'
 import { connect } from 'react-redux';
 
 const Questions = ({ answeredQuestions, unAnsweredQuestions }) => {
-  const [showingQuestions, setShowingQuestions] = useState("answered");
+  const [showingQuestions, setShowingQuestions] = useState("unAnswered");
 
   return (
     <div className="card questions-card">
@@ -42,14 +42,14 @@ const mapStateToProps = ({ authedUser, users, questions }) => {
       votes = option => question[option].votes;
     if (votes("optionOne").includes(authedUser) || votes("optionTwo").includes(authedUser)) return question;
     return false;
-  }).map(qid => questions[qid]);
+  }).map(qid => questions[qid]).sort((a, b) => b.timestamp - a.timestamp);
 
   unAnsweredQuestions = Object.keys(questions).filter(qid => {
     let question = questions[qid],
       votes = option => question[option].votes;
     if (!votes("optionOne").includes(authedUser) && !votes("optionTwo").includes(authedUser)) return question;
     return false;
-  }).map(qid => questions[qid]);
+  }).map(qid => questions[qid]).sort((a, b) => b.timestamp - a.timestamp);
 
   return {
     answeredQuestions,
