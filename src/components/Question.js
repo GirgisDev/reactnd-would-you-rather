@@ -15,7 +15,7 @@ const Question = ({ users, authedUser, question }) => {
           <p className="card-text">{ question.optionOne.text }</p>
           <Link 
             className="btn btn-block btn-outline-success" 
-            to={`question/${question.id}`}>Viwe pull</Link>
+            to={`questions/${question.id}`}>Viwe pull</Link>
         </div>
       </div>
     </div>

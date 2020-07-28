@@ -31,6 +31,7 @@ const Login = ({ dispatch, authedUser, history }) => {
 
         <button 
           onClick={login}
+          disabled={!selectedUser}
           className="btn btn-block btn-success">Login</button>
       </div>
     </div>

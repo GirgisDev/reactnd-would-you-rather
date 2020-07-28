@@ -9,6 +9,7 @@ import { withRouter, Switch, Route } from 'react-router-dom';
 import Login from './Login';
 import Questions from './Questions';
 import QuestionDetails from "./QuestionDetails"
+import NewQuestion from './NewQuestion';
 
 function App({ authedUser, dispatch, history, location }) {
 
@@ -30,7 +31,8 @@ function App({ authedUser, dispatch, history, location }) {
       <Navbar />
       <Switch>
         <Route path="/login" component={Login} />
-        <Route path="/question/:id" component={QuestionDetails} />
+        <Route path="/questions/:id" component={QuestionDetails} />
+        <Route path="/add" component={NewQuestion} />
         <Route path="/" exact component={Questions} />
       </Switch>
     </div>

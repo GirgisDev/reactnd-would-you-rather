@@ -41,12 +41,14 @@ const mapStateToProps = ({ authedUser, users, questions }) => {
     let question = questions[qid],
       votes = option => question[option].votes;
     if (votes("optionOne").includes(authedUser) || votes("optionTwo").includes(authedUser)) return question;
+    return false;
   }).map(qid => questions[qid]);
 
   unAnsweredQuestions = Object.keys(questions).filter(qid => {
     let question = questions[qid],
       votes = option => question[option].votes;
     if (!votes("optionOne").includes(authedUser) && !votes("optionTwo").includes(authedUser)) return question;
+    return false;
   }).map(qid => questions[qid]);
 
   return {

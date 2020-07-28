@@ -18,10 +18,11 @@ const QuestionDetails = ({ authedUser, questions, match }) => {
 
   return (
     <React.Fragment>
-      {isAnsweredQuestion() 
-        ? <AnsweredQuestion questionId={questionId} /> 
-        : <UnAnwseredQuestion questionId={questionId} /> 
-      }
+      {authedUser && (
+        isAnsweredQuestion() 
+          ? <AnsweredQuestion questionId={questionId} /> 
+          : <UnAnwseredQuestion questionId={questionId} /> 
+      )}
     </React.Fragment>
   );
 }

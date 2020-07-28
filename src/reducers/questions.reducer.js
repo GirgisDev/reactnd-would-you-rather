@@ -5,16 +5,16 @@ export default function questions(state = {}, action) {
     case RECEIVE_QUESTIONS:
       return {...action.questions}
     case ADD_QUESTION:
-      return {...state, ...action.question}
+      return {...state, [action.question.id]: {...action.question}}
     case ANSWER_QUESTION:
-      const { id, option, loggedInUser } = action;
+      const { qid, answer, authedUser } = action.question;
       return {
         ...state, 
-        [id]: {
-          ...state[id],
-          [state[id][option]]: {
-            ...state[id][option],
-            votes: state[id][option]['votes'].concat([loggedInUser]) 
+        [qid]: {
+          ...state[qid],
+          [answer]: {
+            ...state[qid][answer],
+            votes: state[qid][answer]['votes'].concat([authedUser]) 
           }
         }
       }

@@ -17,7 +17,7 @@ const Navbar = ({ dispatch, user }) => {
       <NavLink 
         className="nav-link" 
         activeClassName="nav-link--active" 
-        to="/new-questions">New questions</NavLink>
+        to="/add">New question</NavLink>
       <NavLink 
         className="nav-link" 
         activeClassName="nav-link--active" 

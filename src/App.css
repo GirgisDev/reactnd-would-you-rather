@@ -212,3 +212,28 @@
   border-bottom: 3px solid transparent;
   border-top: 3px solid #46B546;
 }
+
+
+/*******************************\
+      divider properties
+\*******************************/
+
+.divider {
+  position: relative;
+  margin: 20px 0;
+}
+
+.divider__ruler {
+  border: none;
+  height: 2px;
+  background-color: #DEDEDE;
+}
+
+.divider__text {
+  position: absolute;
+  top: -12px;
+  left: calc(50% - 30px);
+  margin: 0 auto;
+  padding: 0 10px;
+  background-color: #FFF;
+}
