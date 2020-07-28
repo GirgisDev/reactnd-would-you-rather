@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { handleAnswerQuestion } from '../actions/questions.action';
+import { addToAnsweredQuestion } from '../actions/users.action';
 
 const UnAnsweredQuestion = ({ authedUser, users, questions, questionId, dispatch }) => {
   const question = questions[questionId],
@@ -10,7 +11,10 @@ const UnAnsweredQuestion = ({ authedUser, users, questions, questionId, dispatch
   let answer;
 
   const answerQuestion = () => {
-    dispatch(handleAnswerQuestion({ authedUser, qid: questionId, answer }))
+    const questionData = { authedUser, qid: questionId, answer };
+    dispatch(handleAnswerQuestion(questionData, () => {
+      dispatch(addToAnsweredQuestion(questionData));
+    }));
   }
   return (
     <div className="card question-card question-card--details">

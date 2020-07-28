@@ -1,6 +1,14 @@
 .text-center {
   text-align: center;
 }
+.clearfix {
+  clear: both;
+}
+
+.loading-text {
+  text-align: center;
+  margin-top: 60px;
+}
 
 .nav {
   border-bottom: 3px solid #46b546;
@@ -125,7 +133,6 @@
   cursor: pointer;
 }
 
-
 /***********************************\
   answered question properties
 \***********************************/
@@ -133,9 +140,9 @@
 .question-card__result-box {
   position: relative;
   margin-bottom: 20px;
-  border: 1px solid #DEDEDE;
+  border: 1px solid #dedede;
   padding: 30px 20px 20px;
-  background-color: #F9F9F9;
+  background-color: #f9f9f9;
   border-radius: 5px;
 }
 .question-card__result-box--selected {
@@ -147,14 +154,14 @@
   width: 100%;
   height: 30px;
   margin: 14px 0;
-  background-color: #EAEAEA;
+  background-color: #eaeaea;
   border-radius: 4px;
   overflow: hidden;
 }
 
 .question-card__result-box__progress__bar {
   background-color: #46b546;
-  color: #FFFF;
+  color: #ffff;
   height: inherit;
   line-height: 30px;
   text-align: right;
@@ -165,22 +172,23 @@
   font-weight: bold;
 }
 
-
 /*******************************\
       ribbon properties
 \*******************************/
 .ribbon {
   position: absolute;
-  right: -5px; top: -5px;
+  right: -5px;
+  top: -5px;
   z-index: 1;
   overflow: hidden;
-  width: 75px; height: 75px;
+  width: 75px;
+  height: 75px;
   text-align: right;
 }
 .ribbon__text {
   font-size: 10px;
   font-weight: bold;
-  color: #FFF;
+  color: #fff;
   text-transform: uppercase;
   text-align: center;
   line-height: 20px;
@@ -188,31 +196,35 @@
   -webkit-transform: rotate(45deg);
   width: 100px;
   display: block;
-  background: #79A70A;
-  background: linear-gradient(#69C928 0%, #46B546 100%);
+  background: #79a70a;
+  background: linear-gradient(#69c928 0%, #46b546 100%);
   box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
   position: absolute;
-  top: 19px; right: -21px;
+  top: 19px;
+  right: -21px;
 }
 .ribbon__text::before {
   content: "";
-  position: absolute; left: 0px; top: 100%;
+  position: absolute;
+  left: 0px;
+  top: 100%;
   z-index: -1;
-  border-left: 3px solid #46B546;
+  border-left: 3px solid #46b546;
   border-right: 3px solid transparent;
   border-bottom: 3px solid transparent;
-  border-top: 3px solid #46B546;
+  border-top: 3px solid #46b546;
 }
 .ribbon__text::after {
   content: "";
-  position: absolute; right: 0px; top: 100%;
+  position: absolute;
+  right: 0px;
+  top: 100%;
   z-index: -1;
   border-left: 3px solid transparent;
-  border-right: 3px solid #46B546;
+  border-right: 3px solid #46b546;
   border-bottom: 3px solid transparent;
-  border-top: 3px solid #46B546;
+  border-top: 3px solid #46b546;
 }
-
 
 /*******************************\
       divider properties
@@ -226,7 +238,7 @@
 .divider__ruler {
   border: none;
   height: 2px;
-  background-color: #DEDEDE;
+  background-color: #dedede;
 }
 
 .divider__text {
@@ -235,5 +247,97 @@
   left: calc(50% - 30px);
   margin: 0 auto;
   padding: 0 10px;
-  background-color: #FFF;
+  background-color: #fff;
+}
+
+/*******************************\
+    leaderboard properties
+\*******************************/
+
+.leaderboard {
+  width: 550px;
+  margin: 50px auto;
+}
+
+.user-rank {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #dedede;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+
+.user-rank__avatar {
+  width: 100px;
+  border-radius: 50%;
+  float: left;
+}
+
+.user-rank__details {
+  float: left;
+  width: calc(100% - 240px);
+  padding: 0 20px;
+  margin: 0 20px;
+  border-left: 1px solid #dedede;
+  border-right: 1px solid #dedede;
+}
+
+.user-rank__details__result {
+  padding-bottom: 8px;
+  margin: 8px 0;
+  border-bottom: 1px solid #dedede;
+}
+
+.user-rank__details__result:last-of-type {
+  border-bottom: none;
+}
+
+.user-rank__details__result__score {
+  float: right;
+}
+
+.user-rank__score {
+  width: 100px;
+  float: left;
+}
+
+.user-rank__score__final-score {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+  border-radius: 50%;
+  background-color: #46b546;
+  color: #fff;
+}
+
+.card-body--less-padding {
+  padding: 16px !important;
+}
+
+/***********************\
+    cr properties
+\***********************/
+
+.cr {
+  width: 200px;
+  padding: 3px;
+  position: absolute;
+  text-align: center;
+  color: #fff;
+  top: 5px;
+  left: -82px;
+  transform: rotate(-45deg);
+  font-size: 0.7rem;
+}
+
+.cr--gold {
+  background-color: gold;
+}
+.cr--green {
+  background-color: green;
+}
+.cr--silver {
+  background-color: silver;
 }

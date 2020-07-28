@@ -10,8 +10,10 @@ import Login from './Login';
 import Questions from './Questions';
 import QuestionDetails from "./QuestionDetails"
 import NewQuestion from './NewQuestion';
+import LeaderBoard from './LeaderBoard';
+import LoadingBar from 'react-redux-loading';
 
-function App({ authedUser, dispatch, history, location }) {
+function App({ loading, authedUser, dispatch, history, location }) {
 
   useEffect(() => {
     if (authedUser === null) dispatch(handleInitialData());
@@ -28,17 +30,24 @@ function App({ authedUser, dispatch, history, location }) {
   
   return (
     <div className="App">
+      <LoadingBar />
       <Navbar />
-      <Switch>
-        <Route path="/login" component={Login} />
-        <Route path="/questions/:id" component={QuestionDetails} />
-        <Route path="/add" component={NewQuestion} />
-        <Route path="/" exact component={Questions} />
-      </Switch>
+      {loading 
+        ? <h3 className="loading-text">Loading...</h3> 
+        : (
+          <Switch>
+            <Route path="/login" component={Login} />
+            <Route path="/questions/:id" component={QuestionDetails} />
+            <Route path="/add" component={NewQuestion} />
+            <Route path="/leaderboard" component={LeaderBoard} />
+            <Route path="/" exact component={Questions} />
+          </Switch>
+        )
+      } 
     </div>
   );
 }
 
-const mapStateToProps = ({ authedUser }) => ({ authedUser })
+const mapStateToProps = ({ authedUser, loadingBar }) => ({ authedUser, loading: loadingBar.default })
 
 export default withRouter(connect(mapStateToProps)(App));

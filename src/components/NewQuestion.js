@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux';
 import { handleAddQuestion } from "./../actions/questions.action";
+import { addToCreatedQuestion } from '../actions/users.action';
 
 const NewQuestion = ({ dispatch, authedUser, history }) => {
   const [optionOneText, setOptionOneText] = useState("");
@@ -15,7 +16,8 @@ const NewQuestion = ({ dispatch, authedUser, history }) => {
       optionTwoText,
       author: authedUser
     }
-    dispatch(handleAddQuestion(question, () => {
+    dispatch(handleAddQuestion(question, (id) => {
+      dispatch(addToCreatedQuestion({ authedUser, id }));
       history.push("/");
     }));
   }

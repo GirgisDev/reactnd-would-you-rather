@@ -21,7 +21,7 @@ const Navbar = ({ dispatch, user }) => {
       <NavLink 
         className="nav-link" 
         activeClassName="nav-link--active" 
-        to="/leader-board">Leader board</NavLink>
+        to="/leaderboard">Leader board</NavLink>
       {user && (
         <div className="logged-user">
           <span className="logged-user__greeting">Hello, {user.name}</span>

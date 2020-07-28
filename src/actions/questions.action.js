@@ -26,12 +26,13 @@ const answerQuestion = question => {
 export const handleAddQuestion = (question, cb) => dispatch => {
   return saveQuestion(question).then((createdQuestion) => {
     dispatch(addQuestion(createdQuestion));
-    if (cb) cb();
+    if (cb) cb(createdQuestion.id);
   })
 }
 
-export const handleAnswerQuestion = questionData => dispatch => {
+export const handleAnswerQuestion = (questionData, cb) => dispatch => {
   return saveQuestionAnswer(questionData).then(() => {
     dispatch(answerQuestion(questionData));
+    if (cb) cb();
   })
 }
