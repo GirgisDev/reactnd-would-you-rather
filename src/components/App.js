@@ -13,7 +13,6 @@ import NewQuestion from './NewQuestion';
 import LeaderBoard from './LeaderBoard';
 import LoadingBar from 'react-redux-loading';
 import NotFound from './NotFound';
-import Question from './Question';
 
 function App({ loading, authedUser, dispatch, history, location }) {
 
