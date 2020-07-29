@@ -341,3 +341,12 @@
 .cr--silver {
   background-color: silver;
 }
+
+/***********************\
+  not-found properties
+\***********************/
+
+.not-found {
+  text-align: center;
+  margin-top: 50px;
+}

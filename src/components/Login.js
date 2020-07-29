@@ -4,13 +4,12 @@ import { connect } from 'react-redux';
 import { receiveAuthedUser } from '../actions/authedUser.action';
 
 const Login = ({ dispatch, authedUser, history }) => {
-
   const [selectedUser, setSelectedUser] = useState("");
   
   const login = () => {
     dispatch(receiveAuthedUser(selectedUser));
     setTimeout(() => {
-      history.push("/");
+      history.goBack();
     }, 0)
   }
 
